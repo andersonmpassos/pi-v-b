@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Memórias UCPEL - Área Interna</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="../login/logo.png" alt="Logo Memórias UCPEL" class="logo">
+            <h1>Bem-vindo ao Sistema Memórias UCPEL</h1>
+        </header>
+
+        <main>
+            <p>Usuário logado: <span id="userName"></span></p>
+
+            <div class="actions">
+                <a href="#" class="button">Ver Arquivos</a>
+                <a href="#" class="button">Configurações</a>
+                <a href="#" class="button logout" onclick="logout()">Sair</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Recupera usuário logado
+        const user = sessionStorage.getItem("user");
+
+        if (user) {
+            document.getElementById("userName").innerText = user;
+        } else {
+            // Caso não esteja logado, volta pro login
+            window.location.href = "../login/Tela login.html";
+        }
+
+        // Função logout
+        function logout() {
+            sessionStorage.removeItem("user");
+            window.location.href = "../login/Tela login.html";
+        }
+    </script>
+</body>
+</html>
